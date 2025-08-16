@@ -46,6 +46,20 @@ document.getElementById("showModal").addEventListener("click",
             modal.innerHTML = `<h3>هنوز کاربری ثبت نشده است.</h3>`
         }else{
             modal.innerHTML = `<h3>لیست کاربران :</h3>`
+            const list = document.createElement("ul");
+
+            people.map((person , index) =>{
+                const li = document.createElement("li");
+                li.innerText = `${index + 1}. ${person.name} ${person.family}
+                ایمیل : ${person.email}
+                شغل : ${person.job || '---'}
+                تلفن : ${person.phone || '---'}
+                جنسیت : ${person.gender || '---'}`;
+
+                list.appendChild(li)
+            })
+            modal.appendChild(list);
+            console.log(people);
+            
         }
-    }
-)
+    })

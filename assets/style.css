@@ -39,6 +39,12 @@ button{
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    transition: all 1s;
+}
+button:hover{
+    background-color: blue;
+    color: white;
+    transform: scale(1.2);
 }
 .buttons{
     display: flex;
