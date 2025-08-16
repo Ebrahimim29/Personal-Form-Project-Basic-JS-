@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Personal Form Project(Basic JS)</title>
+</head>
+<body>
+    <div class="container">
+        <h2>فرم ثبت اطلاعات کاربران</h2>
+        <form action="" id="userForm">
+            <input type="text" id="name" placeholder="نام">
+            <input type="text" id="family" placeholder="نام خانوادگی">
+            <input type="email" id="email" placeholder="ایمیل">
+            <input type="text" id="job" placeholder="شغل">
+            <input type="tel" id="phone" placeholder="شماره تماس">
+
+            <select name="" id="gender">
+                <option value="">جنسیت را انتخاب کنید</option>
+                <option value="male">male</option>
+                <option value="female">female</option>                
+            </select>
+            
+            <button type="submit">افزودن</button>
+
+        </form>
+
+        <div class="buttons">
+            <button id="showModal">نمایش همه کاربران</button>
+            <button id="findlyByEmail">پیدا کردن با ایمیل</button>
+            <button id="checkIfAllHaveJob">آیا همه شاغل هستند؟</button>
+            <button id="checkIfAnyMale">آیا حداقل یک مرد هست؟</button>
+        </div>
+    </div>
+    
+    <div id="overlay" class="overlay"></div>
+    <div id="modal" class="modal"></div>
+
+
+
+
+
+
+
+
+
+    <script src="/assets/JavaScript.js"></script>
+</body>
+</html>
