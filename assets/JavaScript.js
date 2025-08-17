@@ -50,7 +50,11 @@ document.getElementById("showModal").addEventListener("click",
             modal.innerHTML = `<h3>لیست کاربران :</h3>`
             const list = document.createElement("ul");
 
-            people.map((person , index) =>{
+            // map(): زمانی استفاده می کنیم که یک خروجی (ریترن) داشته باشیم و خروجی یک آرایه است.
+            // people.map((person , index) =>{
+
+            //forEach(): حلقه ای که دقیقا شبیه مپ رفتار می کند،صرفا برای مواقعی که هدف ما از حلقه یک عملیات باشد و نیاز به مقدار خروجی نداشته باشیم 
+            people.forEach((person , index) =>{
 
                 // const name = person.name;
                 // const family = person.family;
@@ -81,10 +85,36 @@ document.getElementById("showModal").addEventListener("click",
         modal.style.visibility = "visible";
     })
 
-    //بستن مدال با کلیک روی پس زمینه
-    overlay.addEventListener("click" , ()=>{
+//بستن مدال با کلیک روی پس زمینه
+overlay.addEventListener("click" , ()=>{
         overlay.style.opacity = "0";
         overlay.style.visibility = "hidden";
         modal.style.opacity = "0";
         modal.style.visibility = "hidden";
     });
+
+// پیدا کردن با ایمیل
+document.getElementById("findlyByEmail").addEventListener("click" , ()=>{
+    const emailToFind = prompt("ایمیل مورد نظر را وارد کنید:");
+    // const person = people.find((p)=>{return p.email === emailToFind.trim()})
+    const person = people.find(p => p.email === emailToFind.trim())
+
+    if(person){
+        const {name , family , job , phone , gender} = person;
+        modal.innerHTML = `
+        <h3>فرد یافت شد :</h3>
+        <p>نام : ${name}</p>
+        <p>نام خانوادگی : ${family}</p>
+        <p>شغل : ${job}</p>
+        <p> شماره تماس : ${phone}</p>
+        <p>جنسیت : ${gender}</p>
+        `;
+    }else{
+        modal.innerHTML = `<p>فردی با این ایمیل یافت نشد😨</p>`;
+    }
+
+    overlay.style.opacity = "1";
+    overlay.style.visibility = "visible";
+    modal.style.opacity = "1";
+    modal.style.visibility = "visible";
+})

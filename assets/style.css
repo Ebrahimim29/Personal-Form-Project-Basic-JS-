@@ -76,3 +76,6 @@ button:hover{
     transition: all 1s;
     width: 100vw;
 }
+li{
+    border: 1px dashed black;
+}
