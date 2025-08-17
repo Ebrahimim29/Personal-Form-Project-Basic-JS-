@@ -79,10 +79,12 @@ document.getElementById("showModal").addEventListener("click",
                       
         }
 
-        overlay.style.opacity = "1";
-        overlay.style.visibility = "visible";
-        modal.style.opacity = "1";
-        modal.style.visibility = "visible";
+        // overlay.style.opacity = "1";
+        // overlay.style.visibility = "visible";
+        // modal.style.opacity = "1";
+        // modal.style.visibility = "visible";
+
+        handleShowModal();
     })
 
 //بستن مدال با کلیک روی پس زمینه
@@ -133,10 +135,12 @@ document.getElementById("findlyByEmail").addEventListener("click" , ()=>{
         modal.innerHTML = `<p>فردی با این ایمیل یافت نشد😨</p>`;
     }
 
-    overlay.style.opacity = "1";
-    overlay.style.visibility = "visible";
-    modal.style.opacity = "1";
-    modal.style.visibility = "visible";
+    // overlay.style.opacity = "1";
+    // overlay.style.visibility = "visible";
+    // modal.style.opacity = "1";
+    // modal.style.visibility = "visible";
+
+    handleShowModal();
 })
 
 //آیا همه شاغل هستند
@@ -149,9 +153,36 @@ document.getElementById("checkIfAllHaveJob").addEventListener("click",()=>{
     ? "<p>همه افراد دارای شغل هستند😎</p>"
     : "<p>برخی افراد شغل ثبت نکرده اند😒</p>";
 
+    // overlay.style.opacity = "1";
+    // overlay.style.visibility = "visible";
+    // modal.style.opacity = "1";
+    // modal.style.visibility = "visible";
+
+    handleShowModal();
+})
+
+//آیا حداقل یک مرد وجود دارد
+//some(): متدی برای جست و جو بین عناصر آرایه که مقدار خروجی آن ترو یا فالس است
+document.getElementById("checkIfAnyMale").addEventListener("click" , ()=>{
+    const hasMale = people.some(p => p.gender === "male");
+
+    modal.innerHTML = hasMale
+    ? "<p>حداقل یک آقا ثبت شده است👨</p>"
+    : "<p>هیچ آقایی ثبت نشده است👩</p>";
+
+    // overlay.style.opacity = "1";
+    // overlay.style.visibility = "visible";
+    // modal.style.opacity = "1";
+    // modal.style.visibility = "visible";
+
+    handleShowModal();
+
+});
+
+//Hosting: تعریف یک دستور در خط های پایین و فراخوانی دستور در خط های بالا
+const handleShowModal = ()=>{
     overlay.style.opacity = "1";
     overlay.style.visibility = "visible";
     modal.style.opacity = "1";
     modal.style.visibility = "visible";
-
-})
+}
