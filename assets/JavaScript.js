@@ -97,18 +97,38 @@ overlay.addEventListener("click" , ()=>{
 document.getElementById("findlyByEmail").addEventListener("click" , ()=>{
     const emailToFind = prompt("ایمیل مورد نظر را وارد کنید:");
     // const person = people.find((p)=>{return p.email === emailToFind.trim()})
-    const person = people.find(p => p.email === emailToFind.trim())
 
-    if(person){
+    // find(): متدی برای یافتن مقدار موردنظر در بین عناصر یک آرایه (فقط مورد اول از عناصر آرایه اگر شرط رو داشته باشه به عنوان عنصر منتخب معرفی می شود
+    // const person = people.find(p => p.email === emailToFind.trim())
+    // if(person){
+        // const {name , family , job , phone , gender} = person;
+        // modal.innerHTML = `
+        // <h3>فرد یافت شد :</h3>
+        // <p>نام : ${name}</p>
+        // <p>نام خانوادگی : ${family}</p>
+        // <p>شغل : ${job}</p>
+        // <p> شماره تماس : ${phone}</p>
+        // <p>جنسیت : ${gender}</p>
+        // `;
+        // }
+
+    const person = people.filter(p => p.email === emailToFind.trim())
+
+    if(person . length > 0){
+        modal.innerHTML = `<h3>افراد یافت شده:</h3>`
+
+        person.forEach(person => {
         const {name , family , job , phone , gender} = person;
-        modal.innerHTML = `
-        <h3>فرد یافت شد :</h3>
+        modal.innerHTML += `
+        <hr>
         <p>نام : ${name}</p>
         <p>نام خانوادگی : ${family}</p>
         <p>شغل : ${job}</p>
-        <p> شماره تماس : ${phone}</p>
+        <p>شماره تماس : ${phone}</p>
         <p>جنسیت : ${gender}</p>
-        `;
+        `; 
+    });
+
     }else{
         modal.innerHTML = `<p>فردی با این ایمیل یافت نشد😨</p>`;
     }
@@ -117,4 +137,21 @@ document.getElementById("findlyByEmail").addEventListener("click" , ()=>{
     overlay.style.visibility = "visible";
     modal.style.opacity = "1";
     modal.style.visibility = "visible";
+})
+
+//آیا همه شاغل هستند
+document.getElementById("checkIfAllHaveJob").addEventListener("click",()=>{
+
+    //every(): متدی برای سرچ در بین آرایه ها که صرفا خروجی ترو و یا فالس دارد
+    const allHaveJob = people.every(p => p.job.trim() !== "");
+
+    modal.innerHTML = allHaveJob 
+    ? "<p>همه افراد دارای شغل هستند😎</p>"
+    : "<p>برخی افراد شغل ثبت نکرده اند😒</p>";
+
+    overlay.style.opacity = "1";
+    overlay.style.visibility = "visible";
+    modal.style.opacity = "1";
+    modal.style.visibility = "visible";
+
 })
